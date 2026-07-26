@@ -1,0 +1,374 @@
+{
+  "society": {
+    "name": "Ace Divino Residential Society",
+    "location": "Sector 1, Greater Noida West, UP 201306",
+    "total_flats": 1850,
+    "aoa_name": "Ace Divino Apartment Owner Association (AOA)",
+    "contact_email": "aoa@acedivino.in",
+    "helpdesk_phone": "+91 120 4567 890"
+  },
+  "vendors": [
+    {
+      "id": "cbre-main",
+      "name": "CBRE Facilities Management",
+      "category": "Master Facility Manager",
+      "parent_vendor": null,
+      "contract_type": "Comprehensive Facility Management",
+      "contact_person": "Vikram Rathore (Facility Director)",
+      "phone": "+91 98112 34567",
+      "email": "cbre.desk@acedivino.in",
+      "contract_end": "2026-12-31",
+      "description": "Primary Facilities & Operations Management agency overseeing daily operations, guard staffing, housekeeping, MEP and sub-contractors."
+    },
+    {
+      "id": "cbre-hk",
+      "name": "CBRE - Housekeeping & Sanitation",
+      "category": "Housekeeping & Hygiene",
+      "parent_vendor": "cbre-main",
+      "contract_type": "Dedicated Facility Team",
+      "contact_person": "Suman Sharma (HK Supervisor)",
+      "phone": "+91 98112 34568",
+      "email": "cbre.hk@acedivino.in",
+      "contract_end": "2026-12-31",
+      "description": "Responsible for daily cleaning of tower lobbies, lifts, corridors, basements, garbage collection, and common washroom hygiene."
+    },
+    {
+      "id": "cityforce-sec",
+      "name": "CityForce - Security & Gate Operations",
+      "category": "Security & Vigilance",
+      "parent_vendor": null,
+      "contract_type": "Direct AOA Contract",
+      "contact_person": "Capt. R. S. Chauhan (Chief Security Officer)",
+      "phone": "+91 98112 34569",
+      "email": "cityforce.security@acedivino.in",
+      "contract_end": "2026-12-31",
+      "description": "CityForce Security Services manages main gate access, visitor log verification, tower lobby security desks, 24x7 night patrollers, and perimeter security."
+    },
+    {
+      "id": "cbre-mep",
+      "name": "CBRE - MEP & Electrical Maintenance",
+      "category": "Engineering & Electricals",
+      "parent_vendor": "cbre-main",
+      "contract_type": "Dedicated Facility Team",
+      "contact_person": "Amit Kumar (Chief Engineer)",
+      "phone": "+91 98112 34570",
+      "email": "cbre.mep@acedivino.in",
+      "contract_end": "2026-12-31",
+      "description": "Maintains DG power backup sets, electrical substations, common lighting, solar panels, streetlights, and basement exhaust fans."
+    },
+    {
+      "id": "cbre-plumbing",
+      "name": "CBRE - Plumbing & Water Line Team",
+      "category": "Plumbing & Drainage",
+      "parent_vendor": "cbre-main",
+      "contract_type": "Dedicated Facility Team",
+      "contact_person": "Rajesh Verma (Plumbing Head)",
+      "phone": "+91 98112 34571",
+      "email": "cbre.plumbing@acedivino.in",
+      "contract_end": "2026-12-31",
+      "description": "Manages overhead tank water pumps, underground sump filling, common area water leakages, and line pressure balancing."
+    },
+    {
+      "id": "pristine-hk",
+      "name": "Pristine Facilities",
+      "category": "Specialized Deep Cleaning Sub-Contractor",
+      "parent_vendor": "cbre-main",
+      "contract_type": "Sub-contracted under CBRE",
+      "contact_person": "Pankaj Srivastava",
+      "phone": "+91 97170 88990",
+      "email": "info@pristinefacilities.com",
+      "contract_end": "2026-10-31",
+      "description": "Sub-contracted vendor operating under CBRE supervision for high-rise glass/facade cleaning, basement jet washing, and club deep sanitation."
+    },
+    {
+      "id": "meri-bagiya",
+      "name": "Meri Bagiya Horticulture Services",
+      "category": "Horticulture & Landscape",
+      "parent_vendor": null,
+      "contract_type": "Direct AOA Contract",
+      "contact_person": "Manish Gupta (Greenery Lead)",
+      "phone": "+91 98991 12233",
+      "email": "contact@meribagiya.in",
+      "contract_end": "2027-03-31",
+      "description": "Maintains central podium gardens, lawns, flowerbeds, indoor decorative plants, seasonal tree pruning, and organic composting."
+    },
+    {
+      "id": "blue-wave",
+      "name": "Blue Wave Aquatics & Pool Mgmt",
+      "category": "Swimming Pool AMC",
+      "parent_vendor": null,
+      "contract_type": "Direct AOA Contract",
+      "contact_person": "Rohan Yadav (Pool Ops Lead)",
+      "phone": "+91 98188 77665",
+      "email": "service@bluewaveaquatics.com",
+      "contract_end": "2026-09-30",
+      "description": "Manages adult and kids pool filtration plants, daily chemical balance testing (pH & chlorine), lifeguard duty, and pool deck sanitation."
+    },
+    {
+      "id": "ecotech-water",
+      "name": "EcoTech Water Solutions (STP/WTP)",
+      "category": "Water & Sewage Treatment",
+      "parent_vendor": null,
+      "contract_type": "Direct AOA Contract",
+      "contact_person": "Dr. V. K. Mishra",
+      "phone": "+91 99100 44332",
+      "email": "support@ecotechwater.co.in",
+      "contract_end": "2027-01-31",
+      "description": "Operates 800 KLD Sewage Treatment Plant (STP) and Water Softening Plant (WTP), ensuring zero liquid discharge & recycled water for horticulture."
+    },
+    {
+      "id": "otis-elevators",
+      "name": "Otis Elevator India Ltd",
+      "category": "Elevator Maintenance AMC",
+      "parent_vendor": null,
+      "contract_type": "Comprehensive OEM AMC",
+      "contact_person": "Saurabh Tiwari (Service Manager)",
+      "phone": "+91 1800 233 6847",
+      "email": "service.noida@otis.com",
+      "contract_end": "2027-05-31",
+      "description": "OEM maintenance for 24 high-speed passenger and service elevators across all 8 towers (Towers A-H) with 24/7 breakdown support."
+    },
+    {
+      "id": "safeguard-fire",
+      "name": "Safeguard Fire Safety Systems",
+      "category": "Fire Fighting & Safety AMC",
+      "parent_vendor": null,
+      "contract_type": "Direct AOA Contract",
+      "contact_person": "Anil Tyagi",
+      "phone": "+91 98711 22334",
+      "email": "safeguard.fire@gmail.com",
+      "contract_end": "2026-11-30",
+      "description": "Quarterly inspection and maintenance of smoke detectors, sprinkler pumps, fire hydrants, hose reels, and conducting mock resident fire drills."
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-101",
+      "vendor_id": "cbre-hk",
+      "resident_name": "Dr. Ananya Roy",
+      "resident_email": "ananya.roy@acedivino.in",
+      "flat_no": "Tower B-604",
+      "ratings": {
+        "quality": 4,
+        "punctuality": 4,
+        "staff_behavior": 4,
+        "responsiveness": 4,
+        "equipment": 4
+      },
+      "overall_rating": 4.0,
+      "comment": "CBRE housekeeping team maintains Tower B lobby and corridors quite neatly. Daily garbage pickup is prompt around 9:30 AM. However, basement cleaning in B2 needs slightly better frequency during rainy days.",
+      "created_at": "2026-07-20T10:30:00"
+    },
+    {
+      "id": "rev-102",
+      "vendor_id": "cityforce-sec",
+      "resident_name": "Ramesh Chandra",
+      "resident_email": "ramesh.chandra@acedivino.in",
+      "flat_no": "Tower C-1201",
+      "ratings": {
+        "quality": 5,
+        "punctuality": 5,
+        "staff_behavior": 5,
+        "responsiveness": 4,
+        "equipment": 4
+      },
+      "overall_rating": 4.6,
+      "comment": "Main gate security guards are polite, alert, and strict about delivery vendor entries. Guard at Tower C lobby is very helpful for elderly residents. Excellent vigilance!",
+      "created_at": "2026-07-22T14:15:00"
+    },
+    {
+      "id": "rev-103",
+      "vendor_id": "pristine-hk",
+      "resident_name": "Vikramaditya Singh",
+      "resident_email": "vikram.singh@acedivino.in",
+      "flat_no": "Tower A-1502",
+      "ratings": {
+        "quality": 2,
+        "punctuality": 3,
+        "staff_behavior": 3,
+        "responsiveness": 2,
+        "equipment": 2
+      },
+      "overall_rating": 2.4,
+      "comment": "Pristine sub-contractor promised monthly facade window cleaning but exterior glass of Tower A hasn't been cleaned in 2 months. Machine pressure washer was broken last week. Needs stern warning from AOA.",
+      "created_at": "2026-07-24T11:00:00"
+    },
+    {
+      "id": "rev-104",
+      "vendor_id": "meri-bagiya",
+      "resident_name": "Pooja Malhotra",
+      "resident_email": "pooja.malhotra@acedivino.in",
+      "flat_no": "Tower D-403",
+      "ratings": {
+        "quality": 5,
+        "punctuality": 5,
+        "staff_behavior": 5,
+        "responsiveness": 5,
+        "equipment": 4
+      },
+      "overall_rating": 4.8,
+      "comment": "Meri Bagiya gardeners have transformed our podium green area into a lush haven! Beautiful flower beds, pruned trees, and organic composting setup is top-notch. Highly recommend keeping them!",
+      "created_at": "2026-07-25T09:45:00"
+    },
+    {
+      "id": "rev-105",
+      "vendor_id": "blue-wave",
+      "resident_name": "Sameer Joshi",
+      "resident_email": "sameer.joshi@acedivino.in",
+      "flat_no": "Tower E-802",
+      "ratings": {
+        "quality": 3,
+        "punctuality": 2,
+        "staff_behavior": 3,
+        "responsiveness": 3,
+        "equipment": 3
+      },
+      "overall_rating": 2.8,
+      "comment": "Swimming pool water clarity was poor last weekend, and chlorine smell was strong. Lifeguard was absent for 30 minutes during peak evening hours on Sunday. Immediate SLA notice recommended.",
+      "created_at": "2026-07-25T18:20:00"
+    },
+    {
+      "id": "rev-106",
+      "vendor_id": "otis-elevators",
+      "resident_name": "Neha Sharma",
+      "resident_email": "neha.sharma@acedivino.in",
+      "flat_no": "Tower F-1104",
+      "ratings": {
+        "quality": 4,
+        "punctuality": 5,
+        "staff_behavior": 4,
+        "responsiveness": 5,
+        "equipment": 4
+      },
+      "overall_rating": 4.4,
+      "comment": "Otis technicians respond quickly whenever there is a levelling noise or sensor issue. Breakdown response time is under 15 minutes. Very reliable service for high-rise towers.",
+      "created_at": "2026-07-26T08:10:00"
+    },
+    {
+      "id": "rev-1c43ad",
+      "vendor_id": "cbre-hk",
+      "resident_name": "Ananya Roy",
+      "resident_email": "ananya.roy@acedivino.in",
+      "flat_no": "B-604",
+      "ratings": {
+        "quality": 5,
+        "punctuality": 5,
+        "staff_behavior": 5,
+        "responsiveness": 5,
+        "equipment": 5
+      },
+      "overall_rating": 5.0,
+      "comment": "Excellent lobby sweeping and lift mirror cleaning by morning HK staff!",
+      "created_at": "2026-07-26T22:05:30.859272"
+    }
+  ],
+  "sla_incidents": [
+    {
+      "id": "sla-201",
+      "vendor_id": "pristine-hk",
+      "title": "Facade Glass Cleaning Delayed",
+      "reported_by": "vikram.singh@acedivino.in",
+      "flat": "Tower A-1502",
+      "severity": "High",
+      "status": "Under Investigation",
+      "description": "High rise glass cleaning skipped for 60 consecutive days despite scheduled monthly commitment.",
+      "created_at": "2026-07-24T11:30:00"
+    },
+    {
+      "id": "sla-202",
+      "vendor_id": "blue-wave",
+      "title": "Lifeguard Unattended Pool Duty",
+      "reported_by": "sameer.joshi@acedivino.in",
+      "flat": "Tower E-802",
+      "severity": "Critical",
+      "status": "Penalty Issued",
+      "penalty_amount": 5000,
+      "description": "No lifeguard present on pool deck between 5:30 PM - 6:00 PM on Sunday evening with 15 children swimming.",
+      "created_at": "2026-07-25T19:00:00"
+    }
+  ],
+  "ai_knowledge": [
+    {
+      "keywords": [
+        "pool",
+        "swimming",
+        "timings",
+        "costume",
+        "lifeguard"
+      ],
+      "question": "What are the swimming pool timings and safety rules in Ace Divino?",
+      "answer": "\ud83c\udfca **Ace Divino Swimming Pool Info & Guidelines**:\n- **Morning Session**: 6:00 AM - 10:00 AM\n- **Evening Session**: 4:00 PM - 9:00 PM\n- **Weekly Off / Maintenance**: Mondays (Pool closed for chemical treatment)\n- **Rules**: Synthetic/Nylon swimwear mandatory. Children under 10 must be accompanied by an adult. Shower before entering.\n- **Vendor**: Blue Wave Aquatics | Pool Manager: Rohan Yadav (+91 98188 77665)."
+    },
+    {
+      "keywords": [
+        "security",
+        "gate",
+        "guard",
+        "emergency",
+        "contact",
+        "cityforce security",
+        "cityforce"
+      ],
+      "question": "How to contact Ace Divino Security or report a security issue?",
+      "answer": "🛡️ **Ace Divino Security Control Room**:\n- **Main Gate 1 Desk**: +91 98112 34569 or Intercom Ext 101\n- **Chief Security Officer**: Capt. R. S. Chauhan (+91 98112 34569)\n- **Emergency Response**: 24/7 Security patrol available across Towers A-H.\n- **Vendor**: CityForce Security Services."
+    },
+    {
+      "keywords": [
+        "cbre",
+        "office",
+        "maintenance",
+        "desk",
+        "plumber",
+        "electrician",
+        "complaint"
+      ],
+      "question": "Where is the CBRE Facility Desk located and how to reach them?",
+      "answer": "\ud83d\udd27 **CBRE Facilities Office (Ace Divino)**:\n- **Location**: Tower C, Basement B1 (Near Maintenance Room)\n- **Timings**: 9:00 AM - 6:00 PM (Mon - Sat)\n- **Facility Lead**: Mr. Vikram Rathore (+91 98112 34567)\n- **Electrician / MEP**: Ext 202 | **Plumbing Desk**: Ext 203\n- **For In-flat Paid Works**: Raise token at CBRE desk between 9 AM - 1 PM."
+    },
+    {
+      "keywords": [
+        "aoa",
+        "president",
+        "office",
+        "meeting",
+        "management",
+        "board"
+      ],
+      "question": "What are the AOA Office hours and contact details?",
+      "answer": "\ud83c\udfdb\ufe0f **Ace Divino Apartment Owner Association (AOA)**:\n- **AOA Office**: Clubhouse 1st Floor, Room 102\n- **Office Hours**: Saturdays & Sundays (11:00 AM - 1:00 PM)\n- **Official Email**: `aoa@acedivino.in`\n- **AOA President / Secretary**: Open for resident walk-ins during office hours or via email appointment."
+    },
+    {
+      "keywords": [
+        "lift",
+        "elevator",
+        "stuck",
+        "otis",
+        "emergency lift"
+      ],
+      "question": "Who to contact during lift emergency or breakdown in Ace Divino?",
+      "answer": "\ud83d\uded7 **Elevator Emergency Help Desk**:\n- **Immediate Action**: Press yellow ALARM button or ALARM intercom inside lift.\n- **Otis 24/7 Helpline**: 1800 233 6847 / Technician: Saurabh Tiwari (+91 98100 00000)\n- **Control Room Backup**: Security team can manually initiate Automatic Rescue Device (ARD) within 5 mins."
+    },
+    {
+      "keywords": [
+        "move in",
+        "move out",
+        "shifting",
+        "noc",
+        "furniture"
+      ],
+      "question": "What is the policy for Move-In / Move-Out shifting in Ace Divino?",
+      "answer": "\ud83d\udce6 **Shifting / Move-In / Move-Out Policy**:\n- **Timing**: 9:00 AM to 6:00 PM (Monday to Saturday only). No shifting on Sundays & Gazetted Holidays.\n- **NOC Requirement**: Prior NOC from AOA Desk required 48 hours in advance.\n- **Lift Usage**: Only designated Service Lift padded with protection sheets to be used.\n- **Security Deposit**: Move-in NOC security deposit refund settled at AOA desk within 7 working days."
+    },
+    {
+      "keywords": [
+        "waste",
+        "garbage",
+        "trash",
+        "segregation",
+        "bins"
+      ],
+      "question": "What are the waste segregation guidelines in Ace Divino?",
+      "answer": "\u267b\ufe0f **Waste Segregation Guidelines**:\n- **Green Bin**: Wet kitchen waste, vegetable peels, food scraps.\n- **Blue Bin**: Dry recyclable paper, plastics, glass bottles, cardboard.\n- **Red Bin**: Hazardous/Sanitary waste (e-waste, batteries, medical/hygiene items).\n- Daily doorstep waste collection occurs between **8:30 AM - 11:30 AM** by CBRE Housekeeping."
+    }
+  ]
+}

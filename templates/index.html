@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ace Divino - AOA Vendor Scorecard & Resident AI Portal</title>
+  <meta name="description" content="Official AOA Vendor Evaluation Scorecard and AI Resident Assistant for Ace Divino Society, Greater Noida West.">
+  <link rel="icon" type="image/jpeg" href="/static/images/AceDivinoLogo.jpg">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="brand-container">
+      <img src="/static/images/AceDivinoLogo.jpg" alt="Ace Divino Logo" class="brand-logo" onerror="this.src='https://via.placeholder.com/48/0B132B/D4AF37?text=ACE'">
+      <div>
+        <h1 class="brand-title">ACE DIVINO</h1>
+        <p class="brand-subtitle">Apartment Owner Association (AOA) Portal</p>
+      </div>
+    </div>
+
+    <div class="sso-pill">
+      <i class="fa-solid fa-user-shield" style="color: var(--gold-primary);"></i>
+      <span>Logged in as: <strong id="sso-user-email">resident@acedivino.in</strong></span>
+      <span class="sso-badge" id="sso-user-role">Resident (B-402)</span>
+      <button class="btn-outline" style="padding: 2px 10px; font-size: 0.72rem;" onclick="switchSSOPersona()">Switch</button>
+    </div>
+  </header>
+
+  <!-- Hero Section with Ace Divino Image Showcase -->
+  <section class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fa-solid fa-building-shield"></i> Official Ace Divino AOA Portal</div>
+      <h1>Ace Divino <span>Vendor Evaluation & AI Portal</span></h1>
+      <p>Transparent AOA governance powered by resident feedback. Evaluate Master Facilities (CBRE), Gate & Security Operations by <strong>CityForce Security Services</strong>, Pristine Facade Cleaning, Meri Bagiya Gardens & Utility Contractors. Rate performance & resolve society queries with our Resident AI Assistant.</p>
+
+      <div class="hero-actions">
+        <button class="btn-hero-primary" onclick="openPropertyModal()">
+          <i class="fa-solid fa-images"></i> Explore Ace Divino Complex & Gate Map
+        </button>
+        <button class="btn-hero-secondary" onclick="switchTab('tab-ai-chat', document.querySelectorAll('.tab-btn')[2])">
+          <i class="fa-solid fa-robot"></i> Ask Resident AI Assistant
+        </button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-val" id="stat-total-vendors">11</div>
+          <div class="stat-lbl">Active Service Teams</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="stat-society-score">3.85</div>
+          <div class="stat-lbl">Society Score</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="stat-reviews-count">6</div>
+          <div class="stat-lbl">Resident Reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Society Image Card -->
+    <div class="hero-image-card" onclick="openPropertyModal()" title="Click to view full Ace Divino property & gate map">
+      <div class="image-wrapper">
+        <img src="/static/images/imageAceDivino.jpg" alt="Ace Divino Society" class="hero-showcase-img">
+        <div class="image-overlay-gradient"></div>
+        <div class="image-card-content">
+          <span class="location-tag"><i class="fa-solid fa-location-dot"></i> Greater Noida West</span>
+          <h3 class="complex-title">Ace Divino Township</h3>
+          <p class="complex-sub">8 Towers (A-H) | 1,850 Luxury Homes</p>
+          <div class="security-partner-chip">
+            <i class="fa-solid fa-shield-halved"></i> Security Ops: <strong>CityForce</strong>
+          </div>
+        </div>
+        <div class="zoom-badge">
+          <i class="fa-solid fa-expand"></i> Click to Enlarge
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Tabs -->
+  <div class="tabs-container">
+    <button class="tab-btn active" onclick="switchTab('tab-scorecards', this)">
+      <i class="fa-solid fa-star"></i> Vendor Scorecards
+    </button>
+    <button class="tab-btn" onclick="switchTab('tab-aoa-board', this)">
+      <i class="fa-solid fa-scale-balanced"></i> AOA Decision Matrix
+    </button>
+    <button class="tab-btn" onclick="switchTab('tab-ai-chat', this)">
+      <i class="fa-solid fa-robot"></i> Ace AI Resident Assistant
+    </button>
+    <button class="tab-btn" onclick="switchTab('tab-sla-log', this)">
+      <i class="fa-solid fa-triangle-exclamation"></i> SLA Incidents
+    </button>
+    <button class="tab-btn" onclick="switchTab('tab-transparency', this)">
+      <i class="fa-solid fa-bullhorn"></i> Resident Transparency Wall
+    </button>
+  </div>
+
+  <!-- Main Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- TAB 1: VENDOR SCORECARDS -->
+    <section id="tab-scorecards" class="tab-content active">
+      <div class="filter-bar">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="search-input" placeholder="Search vendor name or team (e.g. CityForce, CBRE, Pool)..." onkeyup="filterVendors()">
+        </div>
+        <div class="filter-pills">
+          <button class="pill-filter active" onclick="setCategoryFilter('ALL', this)">All Vendors (11)</button>
+          <button class="pill-filter" onclick="setCategoryFilter('CITYFORCE', this)">CityForce Security</button>
+          <button class="pill-filter" onclick="setCategoryFilter('CBRE', this)">CBRE Facilities & Sub-teams</button>
+          <button class="pill-filter" onclick="setCategoryFilter('INDEPENDENT', this)">Independent Vendors</button>
+          <button class="pill-filter" onclick="setCategoryFilter('KEEP', this)">Grade A (Keep)</button>
+          <button class="pill-filter" onclick="setCategoryFilter('NOTICE', this)">Grade C/D (Notice/Replace)</button>
+        </div>
+      </div>
+
+      <div id="vendor-grid-container" class="vendor-grid">
+        <!-- Vendor Cards Injected Dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- TAB 2: AOA GOVERNANCE DECISION MATRIX -->
+    <section id="tab-aoa-board" class="tab-content">
+      <div class="aoa-summary-grid">
+        <div class="aoa-card">
+          <div class="stat-lbl"><i class="fa-solid fa-circle-check" style="color: #34D399;"></i> Grade A (Keep / Retain)</div>
+          <div class="stat-val" id="cnt-keep" style="color: #34D399;">0</div>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Score >= 4.0 | Contract Renewal Recommended</p>
+        </div>
+        <div class="aoa-card">
+          <div class="stat-lbl"><i class="fa-solid fa-circle-info" style="color: #60A5FA;"></i> Grade B (Satisfactory)</div>
+          <div class="stat-val" id="cnt-review" style="color: #60A5FA;">0</div>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Score 3.2 - 3.9 | Quarterly AOA Audit</p>
+        </div>
+        <div class="aoa-card">
+          <div class="stat-lbl"><i class="fa-solid fa-triangle-exclamation" style="color: #FBBF24;"></i> Grade C (Serve SLA Warning)</div>
+          <div class="stat-val" id="cnt-notice" style="color: #FBBF24;">0</div>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Score 2.5 - 3.1 | 30-Day Cure Notice</p>
+        </div>
+        <div class="aoa-card">
+          <div class="stat-lbl"><i class="fa-solid fa-circle-xmark" style="color: #F87171;"></i> Grade D (Terminate Vendor)</div>
+          <div class="stat-val" id="cnt-terminate" style="color: #F87171;">0</div>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Score < 2.5 | Initiate Replacement Tender</p>
+        </div>
+      </div>
+
+      <div class="aoa-card" style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h3 style="font-family: var(--font-heading); color: var(--gold-light);">
+            <i class="fa-solid fa-list-check" style="color: var(--gold-primary);"></i> AOA Master Vendor Retention & Action Ledger
+          </h3>
+          <button class="btn-primary" onclick="exportAOAReport()"><i class="fa-solid fa-download"></i> Export PDF Audit Report</button>
+        </div>
+        <div class="table-responsive">
+          <table class="custom-table" id="aoa-matrix-table">
+            <thead>
+              <tr>
+                <th>Vendor / Team Name</th>
+                <th>Category</th>
+                <th>Parent Vendor</th>
+                <th>Resident Score</th>
+                <th>Reviews</th>
+                <th>Contract End</th>
+                <th>AOA Action Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dynamic Rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: ACE AI RESIDENT ASSISTANT CHATBOT -->
+    <section id="tab-ai-chat" class="tab-content">
+      <div class="chat-container">
+        <aside class="chat-sidebar">
+          <h3><i class="fa-solid fa-bolt" style="color: var(--gold-primary);"></i> Quick Queries</h3>
+          <div class="chip-list">
+            <button class="chat-chip" onclick="askAIChat('What are the swimming pool timings and rules?')">🏊 Swimming Pool Timings</button>
+            <button class="chat-chip" onclick="askAIChat('How to contact CityForce Security or main gate?')">🛡️ CityForce Gate Security</button>
+            <button class="chat-chip" onclick="askAIChat('Where is CBRE maintenance desk located?')">🔧 CBRE Maintenance Office</button>
+            <button class="chat-chip" onclick="askAIChat('What is the procedure for Move-In / Move-Out shifting?')">📦 Shifting NOC Rules</button>
+            <button class="chat-chip" onclick="askAIChat('What are the waste segregation guidelines?')">♻️ Doorstep Waste Segregation</button>
+            <button class="chat-chip" onclick="askAIChat('How to contact Otis lift emergency service?')">🛗 Lift Emergency Helpline</button>
+            <button class="chat-chip" onclick="askAIChat('What are the AOA Office hours and email?')">🏛️ AOA Office Details</button>
+          </div>
+        </aside>
+
+        <main class="chat-main">
+          <div class="chat-header">
+            <div class="bot-avatar"><i class="fa-solid fa-robot"></i></div>
+            <div>
+              <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: #fff;">Ace Divino Resident AI Assistant</h3>
+              <p style="font-size: 0.78rem; color: var(--gold-primary);">AI Knowledge Base & Vendor Query Desk</p>
+            </div>
+          </div>
+
+          <div class="chat-messages" id="chat-messages-box">
+            <div class="msg-bubble bot">
+              Welcome to <strong>Ace Divino AI Assistant</strong>! 🏙️<br>
+              I can answer queries regarding society rules, CityForce security contacts, maintenance desk, swimming pool timings, shifting NOC rules, or vendor evaluations. How can I help you today?
+            </div>
+          </div>
+
+          <form class="chat-input-area" onsubmit="handleChatSubmit(event)">
+            <input type="text" id="chat-input" placeholder="Ask anything about Ace Divino society rules, CityForce, CBRE, security or vendors..." autocomplete="off">
+            <button type="submit" class="btn-primary" style="width: auto; padding: 0 20px;"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </main>
+      </div>
+    </section>
+
+    <!-- TAB 4: VENDOR SLA INCIDENTS -->
+    <section id="tab-sla-log" class="tab-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div>
+          <h2 style="font-family: var(--font-heading); color: #fff;">Vendor SLA Breach & Service Incident Tracker</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Log critical vendor service failures, unperformed duties, or equipment breakdowns for AOA penalty action.</p>
+        </div>
+        <button class="btn-primary" onclick="openSLAIncidentModal()"><i class="fa-solid fa-plus"></i> Report SLA Breach</button>
+      </div>
+
+      <div class="aoa-card">
+        <div class="table-responsive">
+          <table class="custom-table" id="sla-incidents-table">
+            <thead>
+              <tr>
+                <th>Incident ID</th>
+                <th>Vendor Name</th>
+                <th>Title / Issue</th>
+                <th>Reported By</th>
+                <th>Severity</th>
+                <th>Date Logged</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dynamic Rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: RESIDENT TRANSPARENCY WALL -->
+    <section id="tab-transparency" class="tab-content">
+      <div class="aoa-card" style="margin-bottom: 2rem;">
+        <h2 style="font-family: var(--font-heading); color: var(--gold-light); margin-bottom: 0.5rem;">
+          <i class="fa-solid fa-eye" style="color: var(--gold-primary);"></i> AOA Community Transparency Charter
+        </h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Ace Divino AOA ensures complete transparency. All vendor ratings are calculated from verified resident submissions with mandatory constructive feedback. Vendors below 2.5 average score over 60 days are automatically served contract termination notices.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+          <div style="background: rgba(7,11,25,0.7); padding: 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold);">
+            <h4 style="color: var(--gold-primary); margin-bottom: 6px;"><i class="fa-solid fa-shield"></i> Compulsory Feedback Policy</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Every rating must be accompanied by a minimum 10-character written comment explaining specific observations to prevent arbitrary star dumping.</p>
+          </div>
+          <div style="background: rgba(7,11,25,0.7); padding: 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold);">
+            <h4 style="color: var(--gold-primary); margin-bottom: 6px;"><i class="fa-solid fa-sitemap"></i> Sub-Contractor Accountability</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Sub-vendors (like Pristine glass cleaning operating under CBRE) are scored separately so master management cannot hide sub-contractor deficiencies.</p>
+          </div>
+          <div style="background: rgba(7,11,25,0.7); padding: 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold);">
+            <h4 style="color: var(--gold-primary); margin-bottom: 6px;"><i class="fa-solid fa-gavel"></i> Penalty & Removal Rules</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">SLA violations logged by residents carry mandatory monetary fines deducted directly from the vendor's monthly AOA billing invoice.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL 1: SUBMIT RATING -->
+  <div id="modal-rate-vendor" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Evaluate Vendor Performance</h3>
+        <button class="close-btn" onclick="closeRateModal()">&times;</button>
+      </div>
+
+      <form id="rating-form" onsubmit="handleRatingSubmit(event)">
+        <input type="hidden" id="rate-vendor-id">
+
+        <div class="form-group">
+          <label class="form-label">Vendor Being Evaluated</label>
+          <input type="text" id="rate-vendor-name" class="form-control" readonly style="background: rgba(212,175,55,0.1); color: var(--gold-light); font-weight: 700;">
+        </div>
+
+        <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <label class="form-label">Resident SSO Email</label>
+            <input type="email" id="rate-resident-email" class="form-control" readonly>
+          </div>
+          <div>
+            <label class="form-label">Flat No.</label>
+            <input type="text" id="rate-resident-flat" class="form-control" required placeholder="e.g. Tower B-402">
+          </div>
+        </div>
+
+        <h4 style="font-size: 0.9rem; color: var(--gold-primary); margin: 1rem 0 0.5rem;">Rating Parameters (1 to 5 Stars)</h4>
+
+        <div class="star-rating-row">
+          <span>Quality of Work</span>
+          <div class="star-picker" id="stars-quality" data-value="4">
+            <span class="star" onclick="setStarValue('quality', 1)">★</span>
+            <span class="star" onclick="setStarValue('quality', 2)">★</span>
+            <span class="star" onclick="setStarValue('quality', 3)">★</span>
+            <span class="star" onclick="setStarValue('quality', 4)">★</span>
+            <span class="star" onclick="setStarValue('quality', 5)">★</span>
+          </div>
+        </div>
+
+        <div class="star-rating-row">
+          <span>Punctuality & Schedule</span>
+          <div class="star-picker" id="stars-punctuality" data-value="4">
+            <span class="star" onclick="setStarValue('punctuality', 1)">★</span>
+            <span class="star" onclick="setStarValue('punctuality', 2)">★</span>
+            <span class="star" onclick="setStarValue('punctuality', 3)">★</span>
+            <span class="star" onclick="setStarValue('punctuality', 4)">★</span>
+            <span class="star" onclick="setStarValue('punctuality', 5)">★</span>
+          </div>
+        </div>
+
+        <div class="star-rating-row">
+          <span>Staff Behavior & Courtesy</span>
+          <div class="star-picker" id="stars-staff_behavior" data-value="4">
+            <span class="star" onclick="setStarValue('staff_behavior', 1)">★</span>
+            <span class="star" onclick="setStarValue('staff_behavior', 2)">★</span>
+            <span class="star" onclick="setStarValue('staff_behavior', 3)">★</span>
+            <span class="star" onclick="setStarValue('staff_behavior', 4)">★</span>
+            <span class="star" onclick="setStarValue('staff_behavior', 5)">★</span>
+          </div>
+        </div>
+
+        <div class="star-rating-row">
+          <span>Responsiveness to Escalation</span>
+          <div class="star-picker" id="stars-responsiveness" data-value="4">
+            <span class="star" onclick="setStarValue('responsiveness', 1)">★</span>
+            <span class="star" onclick="setStarValue('responsiveness', 2)">★</span>
+            <span class="star" onclick="setStarValue('responsiveness', 3)">★</span>
+            <span class="star" onclick="setStarValue('responsiveness', 4)">★</span>
+            <span class="star" onclick="setStarValue('responsiveness', 5)">★</span>
+          </div>
+        </div>
+
+        <div class="star-rating-row">
+          <span>Equipment & Material Standard</span>
+          <div class="star-picker" id="stars-equipment" data-value="4">
+            <span class="star" onclick="setStarValue('equipment', 1)">★</span>
+            <span class="star" onclick="setStarValue('equipment', 2)">★</span>
+            <span class="star" onclick="setStarValue('equipment', 3)">★</span>
+            <span class="star" onclick="setStarValue('equipment', 4)">★</span>
+            <span class="star" onclick="setStarValue('equipment', 5)">★</span>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 1.2rem;">
+          <label class="form-label">
+            Detailed Feedback / Observations <span class="compulsory-badge">* COMPULSORY</span>
+          </label>
+          <textarea id="rate-comment" class="form-control" rows="4" required minlength="10" placeholder="Describe your experience with this vendor team in detail (minimum 10 characters required)..."></textarea>
+        </div>
+
+        <div id="rate-error-box" class="error-alert"></div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; margin-top: 0.5rem;">
+          <i class="fa-solid fa-paper-plane"></i> Submit Compulsory Feedback & Rating
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 2: VIEW VENDOR REVIEWS & COMMENTS -->
+  <div id="modal-view-reviews" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="view-modal-vendor-name">Vendor Feedback Feed</h3>
+          <p style="font-size: 0.8rem; color: var(--gold-primary);" id="view-modal-vendor-cat"></p>
+        </div>
+        <button class="close-btn" onclick="closeReviewsModal()">&times;</button>
+      </div>
+
+      <div id="reviews-list-container">
+        <!-- Injected Dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: LOG SLA INCIDENT -->
+  <div id="modal-sla-incident" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Log Vendor SLA Breach Incident</h3>
+        <button class="close-btn" onclick="closeSLAModal()">&times;</button>
+      </div>
+
+      <form id="sla-form" onsubmit="handleSLASubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Select Vendor</label>
+          <select id="sla-vendor-select" class="form-control" required></select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Incident Title</label>
+          <input type="text" id="sla-title" class="form-control" required placeholder="e.g. Uncleaned basement water leakage or guard absent">
+        </div>
+
+        <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <label class="form-label">Severity Level</label>
+            <select id="sla-severity" class="form-control">
+              <option value="Low">Low</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="High">High</option>
+              <option value="Critical">Critical</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Flat No.</label>
+            <input type="text" id="sla-flat" class="form-control" required placeholder="Tower B-402">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Incident Description</label>
+          <textarea id="sla-desc" class="form-control" rows="3" required placeholder="Provide clear details of location, time, and defect..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; padding: 12px;">
+          <i class="fa-solid fa-shield-virus"></i> File SLA Incident to AOA
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 4: ACE DIVINO PROPERTY & GATE MAP SHOWCASE -->
+  <div id="modal-property-showcase" class="modal-overlay">
+    <div class="modal-card modal-card-lg">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title"><i class="fa-solid fa-building-user" style="color: var(--gold-primary);"></i> Ace Divino Residential Complex Overview</h3>
+          <p style="font-size: 0.85rem; color: var(--gold-primary);">Sector 1, Greater Noida West, UP | 1,850 Active Residences</p>
+        </div>
+        <button class="close-btn" onclick="closePropertyModal()">&times;</button>
+      </div>
+      
+      <div class="property-modal-body">
+        <div class="modal-img-container">
+          <img src="/static/images/imageAceDivino.jpg" alt="Ace Divino High Res Architecture" class="modal-highres-img">
+        </div>
+        <div class="property-details-grid">
+          <div class="detail-card">
+            <h4><i class="fa-solid fa-shield-halved" style="color: #34D399;"></i> Security & Gate Operations</h4>
+            <p style="font-weight: 700; color: #fff;">Vendor: CityForce Security Services</p>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">24/7 Gate 1 & Gate 2 surveillance, visitor OTP validation, lobby desks, and perimeter night guards.</p>
+          </div>
+          <div class="detail-card">
+            <h4><i class="fa-solid fa-wrench" style="color: #60A5FA;"></i> Master Facility Management</h4>
+            <p style="font-weight: 700; color: #fff;">Vendor: CBRE Facilities Management</p>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Basement B1 Desk managing common MEP, power backup, electrical substations, and plumbing lines.</p>
+          </div>
+          <div class="detail-card">
+            <h4><i class="fa-solid fa-seedling" style="color: #10B981;"></i> Horticulture & Podium Greens</h4>
+            <p style="font-weight: 700; color: #fff;">Vendor: Meri Bagiya Horticulture</p>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Lush podium gardens, manicured central lawns, organic waste composting, and floral upkeep.</p>
+          </div>
+          <div class="detail-card">
+            <h4><i class="fa-solid fa-water" style="color: #38BDF8;"></i> Aquatic & Pool Care</h4>
+            <p style="font-weight: 700; color: #fff;">Vendor: Blue Wave Aquatics</p>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Adult & kids swimming pool chemical balance, filtration, deck hygiene, and certified lifeguards.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
